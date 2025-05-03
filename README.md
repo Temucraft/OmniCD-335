@@ -1,5 +1,5 @@
-# OmniCD for WotLK (3.3.5a/Classic)
-**`New lightweight addon to track party cooldowns, now for 3.3.5a private servers.`**
+# OmniCD - Party Cooldown Tracker for 3.3.5a client (WotLK, TBC, Vanilla)
+**`New lightweight addon to track party cooldowns, now for 3.3.5a.`**
 
 ---
 
@@ -11,7 +11,7 @@
 ---
 # 📥 Installation
 
-Soon.
+--
 
 <!-- blank line -->
 <br>
