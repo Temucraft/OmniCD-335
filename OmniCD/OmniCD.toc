@@ -1,0 +1,18 @@
+## Interface: 30303
+## Title: OmniCD
+## Notes: Party cooldown tracker. /oc
+## Author: Treebonker, Tsoukie
+## Version: 1.0
+## DefaultState: Enabled
+## SavedVariables: OmniCDDB
+## OptionalDeps: Ace3, LibOmniCDC, LibDeflate, LibSharedMedia-3.0, UTF8
+## RequiredDeps: !!!ClassicAPI
+## X-License: All Rights Reserved
+## X-Localizations: enUS, deDE, esMX, frFR, koKR, ruRU, zhCN, zhTW
+
+Embeds.xml
+Locales\Locales.xml
+Core\Core.xml
+Modules\Spells\Spells.xml
+Modules\Modules.xml
+Config\Config.xml
