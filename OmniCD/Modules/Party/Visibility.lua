@@ -315,12 +315,14 @@ end
 
 local function GROUP_ROSTER_UPDATE_BUCKET()
 	P.UpdateRosterInfoQueued = nil
-	P:UpdateRosterInfo()
+	if P.eventZone then
+		P:UpdateRosterInfo()
+	end
 end
 
 function P:GROUP_ROSTER_UPDATE(isPEWOrRefresh)
 	local GROUP_ROSTER_SIZE_LAST = GROUP_ROSTER_SIZE or 0
-	GROUP_ROSTER_SIZE = P:GetEffectiveNumGroupMembers()
+	GROUP_ROSTER_SIZE = self:GetEffectiveNumGroupMembers()
 
 	if isPEWOrRefresh or GROUP_ROSTER_SIZE < GROUP_ROSTER_SIZE_LAST then
 		self:UpdateRosterInfo(isPEWOrRefresh)
