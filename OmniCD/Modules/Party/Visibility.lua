@@ -181,7 +181,7 @@ function P:PLAYER_ENTERING_WORLD(isRefresh)
 	self:RefreshExBarFrames()
 
 	if isRefresh or (not self.UpdateRosterInfoQueued and not callbackTimers.rosterDelay) then
-		if not GROUP_ROSTER_SIZE then
+		if not GROUP_ROSTER_SIZE and not self.isInTestMode then
 			self.UpdateRosterInfoQueued = true
 			C_Timer.After(.4, function()
 				self:GROUP_ROSTER_UPDATE(true)
@@ -200,7 +200,7 @@ function P:UpdateRosterInfo(force, clearSession)
 	local isInRaid = IsInRaid()
 
 	local wasDisabled = P.disabled
-	P.disabled = not P.isInArena and (
+	P.disabled = not P.isInTestMode and (
 		size == 0 and not P.isInArena or
 		size == 1 and P.isUserDisabled and not P.isInArena or
 		not E.profile.Party.visibility.finder and ((P.isInArena and not select(2, IsActiveBattlefieldArena())) or IsPartyLFG()) or
