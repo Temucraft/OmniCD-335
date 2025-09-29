@@ -29,7 +29,7 @@ function BarFrameIconMixin:ResetCooldown()
 		if duration and duration > 0 then
 			duration = expTime - GetTime()
 			if duration > 0 then
-				self:StartCooldown(duration, nil, true)
+				self:StartCooldown(duration, true)
 			end
 			return
 		end

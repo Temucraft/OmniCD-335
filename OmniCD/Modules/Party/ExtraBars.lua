@@ -318,6 +318,7 @@ local ReverseSorter = function(a, b)
 end
 
 function ExtraBarFrameMixin:UpdateLayout(sortOrder, updateIcons)
+	if Sorter then return end
 
 	if updateIcons then
 		local n = 0
@@ -376,6 +377,8 @@ function ExtraBarFrameMixin:UpdateLayout(sortOrder, updateIcons)
 			icon:Show()
 		end
 	end
+
+	Sorter = nil
 end
 
 function ExtraBarFrameMixin:UpdateSettings()

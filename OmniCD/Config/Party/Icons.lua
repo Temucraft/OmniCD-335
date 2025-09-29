@@ -157,7 +157,8 @@ function P:ConfigSize()
 	end
 	if E.db.icons.displayBorder then
 		if not sliderTimer then
-			sliderTimer = C_Timer.After(0.3, UpdatePixelObjects)
+			sliderTimer = true
+			C_Timer.After(0.3, UpdatePixelObjects)
 		end
 	end
 end
