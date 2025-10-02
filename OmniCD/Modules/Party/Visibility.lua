@@ -129,7 +129,7 @@ local function ScheduleRosterUpdate()
 	callbackTimers.rosterDelay = C_Timer.NewTimer(2, P.UpdateRosterInfo)
 end
 
-function P:PLAYER_ENTERING_WORLD(isRefresh)
+function P:ZONE_CHANGED_NEW_AREA(isRefresh)
 	local _, instanceType = IsInInstance()
 
 	local wasDisabled = self.disabledZone
@@ -193,7 +193,10 @@ function P:PLAYER_ENTERING_WORLD(isRefresh)
 	end
 end
 
-P.ZONE_CHANGED_NEW_AREA = P.PLAYER_ENTERING_WORLD
+function P:PLAYER_ENTERING_WORLD()
+	self:ZONE_CHANGED_NEW_AREA()
+	self:UnregisterEvent("PLAYER_ENTERING_WORLD")
+end
 
 function P:UpdateRosterInfo(force, clearSession)
 	local size = GROUP_ROSTER_SIZE

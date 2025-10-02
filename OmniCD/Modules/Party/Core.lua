@@ -22,8 +22,10 @@ function P:Enable()
 	self:RegisterEvent("UI_SCALE_CHANGED")
 	self:RegisterEvent("PLAYER_REGEN_ENABLED")
 	self:RegisterEvent("PLAYER_REGEN_DISABLED")
-	self:RegisterEvent("PLAYER_ENTERING_WORLD")
 	self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+	if not self.zone and GetNumTalentTabs() ~= 0 then
+		self:RegisterEvent("PLAYER_ENTERING_WORLD")
+	end
 	self:SetScript("OnEvent", function(self, event, ...)
 		self[event](self, ...)
 	end)
@@ -97,7 +99,7 @@ function P:Refresh()
 	end
 	self:UpdateStatusBarTextures()
 	self:UpateStatusBarTimerFormat()
-	self:PLAYER_ENTERING_WORLD(true)
+	self:ZONE_CHANGED_NEW_AREA(true)
 end
 
 function P:UpdateEnabledSpells()
