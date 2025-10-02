@@ -679,7 +679,7 @@ function P:CreateUnitBarFramePool()
 		unitBar.bar.activeUnitBars[unitBar.index] = nil
 	end
 
-	self.UnitBarPool = E:CreateFramePool("Frame", UIParent, nil, resetterFunc, initializeFunc)
+	self.UnitBarPool = E:CreateFramePool("Frame", UIParent, "", resetterFunc, initializeFunc)
 end
 
 P.extraBarKeys = extraBarKeys
