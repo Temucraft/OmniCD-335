@@ -264,7 +264,7 @@ Scripts
 -------------------------------------------------------------------------------]]
 local function Tab_OnClick(frame)
 	if not (frame.selected or frame.disabled) then
-		PlaySound("igCharacterInfoTab") -- SOUNDKIT.IG_CHARACTER_INFO_TAB
+		PlaySound("igCharacterInfoTab")
 		frame.obj:SelectTab(frame.value)
 		frame.bg:Show() -- s a
 	end

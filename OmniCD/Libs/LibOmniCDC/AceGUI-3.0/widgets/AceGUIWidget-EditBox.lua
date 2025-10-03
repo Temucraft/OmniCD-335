@@ -101,13 +101,13 @@ local function EditBox_OnEnterPressed(frame)
 	local cancel = self:Fire("OnEnterPressed", value)
 	--[[ s r
 	if not cancel then
-		PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON)
+		PlaySound("igMainMenuOptionCheckBoxOn")
 		HideButton(self)
 	end
 	]]
 	if not cancel then
 		self.lasttext = value -- now we can update
-		PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON)
+		PlaySound("igMainMenuOptionCheckBoxOn")
 		HideButton(self)
 	end
 	-- e

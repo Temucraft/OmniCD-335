@@ -318,8 +318,6 @@ local ReverseSorter = function(a, b)
 end
 
 function ExtraBarFrameMixin:UpdateLayout(sortOrder, updateIcons)
-	if Sorter then return end
-
 	if updateIcons then
 		local n = 0
 		for i = self.numIcons, 1, -1 do
@@ -336,7 +334,7 @@ function ExtraBarFrameMixin:UpdateLayout(sortOrder, updateIcons)
 		self.numIcons = self.numIcons - n
 	end
 
-	if self.numIcons == 0 then
+	if self.sorting or self.numIcons == 0 then
 		return
 	end
 
@@ -351,6 +349,7 @@ function ExtraBarFrameMixin:UpdateLayout(sortOrder, updateIcons)
 		end
 	else
 		if sortOrder then
+			self.sorting = true
 			Sorter = sorters[db.sortBy]
 			local sortFunc = db.sortDirection == "dsc" and ReverseSorter or Sorter
 			sort(self.icons, sortFunc)
@@ -378,7 +377,7 @@ function ExtraBarFrameMixin:UpdateLayout(sortOrder, updateIcons)
 		end
 	end
 
-	Sorter = nil
+	self.sorting = nil
 end
 
 function ExtraBarFrameMixin:UpdateSettings()

@@ -263,7 +263,7 @@ local function StaticPopup_OnHide(self)
 end
 
 local function StaticPopup_OnAccept(self)
-	PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON)
+	PlaySound("igMainMenuOptionCheckBoxOn")
 	local frame = self:GetParent()
 	local info = frame.info
 	local OnAccept = info.OnAccept
@@ -280,7 +280,7 @@ local function StaticPopup_OnAccept(self)
 end
 
 local function StaticPopup_OnCancel(self)
-	PlaySound(SOUNDKIT.IG_MAINMENU_OPTION)
+	PlaySound("igMainMenuOption")
 	local frame = self:GetParent()
 	local info = frame.info
 	local OnCancel = info.OnCancel
@@ -294,7 +294,7 @@ local function StaticPopup_OnCancel(self)
 end
 
 local function StaticPopup_OnAlt(self)
-	PlaySound(SOUNDKIT.IG_MAINMENU_OPTION)
+	PlaySound("igMainMenuOption")
 	local frame = self:GetParent()
 	local info = frame.info
 	local OnAlt = info.OnAlt

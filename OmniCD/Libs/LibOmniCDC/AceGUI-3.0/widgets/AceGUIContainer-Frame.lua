@@ -28,7 +28,8 @@ local CreateFrame, UIParent = CreateFrame, UIParent
 Scripts
 -------------------------------------------------------------------------------]]
 local function Button_OnClick(frame)
-	PlaySound("gsTitleOptionExit") -- SOUNDKIT.GS_TITLE_OPTION_EXIT
+	AceGUI:ClearFocus()
+	PlaySound("gsTitleOptionExit")
 	frame.obj:Hide()
 end
 

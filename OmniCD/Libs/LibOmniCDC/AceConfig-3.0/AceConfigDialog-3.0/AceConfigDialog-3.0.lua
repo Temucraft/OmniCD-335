@@ -803,7 +803,7 @@ local function ActivateControl(widget, event, ...)
 		else
 			validationErrorPopup(validated)
 		end
-		PlaySound("igPlayerInviteDecline") -- SOUNDKIT.IG_PLAYER_INVITE_DECLINE || _DECLINE is actually missing from the table
+		PlaySound("igPlayerInviteDecline")
 		del(info)
 		return true
 	else

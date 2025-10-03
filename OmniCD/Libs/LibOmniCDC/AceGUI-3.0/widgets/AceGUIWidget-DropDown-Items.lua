@@ -365,9 +365,9 @@ do
 		if self.disabled then return end
 		self.value = not self.value
 		if self.value then
-			PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON)
+			PlaySound("igMainMenuOptionCheckBoxOn")
 		else
-			PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_OFF)
+			PlaySound("igMainMenuOptionCheckBoxOff")
 		end
 		UpdateToggle(self)
 		self:Fire("OnValueChanged", self.value)
