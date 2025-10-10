@@ -20,33 +20,11 @@ local PARTY_UNIT = {
 	"party1", "party2", "party3", "party4", "player"
 }
 
-local INSTANCETYPE_EVENTS = {
-	--[[raid = {
-		"ENCOUNTER_END"
-	},
-	pvp = {
-		"CHAT_MSG_BG_SYSTEM_NEUTRAL",
-	}]]
-}
-
 function P:RegisterZoneEvents()
 	if self.eventZone == self.zone then
 		return
 	end
 
-	local events = INSTANCETYPE_EVENTS[self.eventZone]
-	if events then
-		for _, event in ipairs(events) do
-			self:UnregisterEvent(event)
-		end
-	end
-
-	events = INSTANCETYPE_EVENTS[self.zone]
-	if events then
-		for _, event in ipairs(events) do
-			self:RegisterEvent(event)
-		end
-	end
 	self:RegisterEvent("GROUP_ROSTER_UPDATE")
 	self.eventZone = self.zone
 end
@@ -56,12 +34,6 @@ function P:UnregisterZoneEvents()
 		return
 	end
 
-	local events = INSTANCETYPE_EVENTS[self.eventZone]
-	if events then
-		for _, event in ipairs(INSTANCETYPE_EVENTS[self.eventZone]) do
-			self:UnregisterEvent(event)
-		end
-	end
 	self:UnregisterEvent("GROUP_ROSTER_UPDATE")
 	self.eventZone = nil
 end
@@ -126,7 +98,7 @@ local function ScheduleRosterUpdate()
 	if callbackTimers.rosterDelay then
 		callbackTimers.rosterDelay:Cancel()
 	end
-	callbackTimers.rosterDelay = C_Timer.NewTimer(2, P.UpdateRosterInfo)
+	callbackTimers.rosterDelay = C_Timer.NewTimer(UPDATE_ROSTER_DELAY, P.UpdateRosterInfo)
 end
 
 function P:ZONE_CHANGED_NEW_AREA(isRefresh)
@@ -295,24 +267,28 @@ function P:UpdateRosterInfo(force, clearSession)
 		end
 	end
 
-	P:UpdateExBars()
-	CM:EnqueueInspect()
+	if P.groupUpdate or force or isCallback or clearSession then
+		P:UpdateExBars()
+		CM:EnqueueInspect()
 
-	if force or isReadyForSync then
-		if isReadyForSync then
-			P.groupJoined = nil
+		if force or isReadyForSync then
+			if isReadyForSync then
+				P.groupJoined = nil
+			end
+			ScheduleSyncRequest()
 		end
-		ScheduleSyncRequest()
-	end
 
-	if isCallback then
-		callbackTimers.rosterDelay = nil
-	else
-		ScheduleAnchorUpdate()
+		if isCallback then
+			callbackTimers.rosterDelay = nil
+		else
+			ScheduleAnchorUpdate()
 
-		if not callbackTimers.rosterDelay then
-			ScheduleRosterUpdate()
+			if not callbackTimers.rosterDelay then
+				ScheduleRosterUpdate()
+			end
 		end
+
+		P.groupUpdate = nil
 	end
 end
 
@@ -330,32 +306,16 @@ function P:GROUP_ROSTER_UPDATE(isPEWOrRefresh)
 	if isPEWOrRefresh or GROUP_ROSTER_SIZE < GROUP_ROSTER_SIZE_LAST then
 		self:UpdateRosterInfo(isPEWOrRefresh)
 	elseif not self.UpdateRosterInfoQueued then
-		if GROUP_ROSTER_SIZE_LAST == 0 and GROUP_ROSTER_SIZE > 0 then
-			self.groupJoined = true
+		if GROUP_ROSTER_SIZE ~= GROUP_ROSTER_SIZE_LAST then
+			if GROUP_ROSTER_SIZE_LAST == 0 and GROUP_ROSTER_SIZE > 0 then
+				self.groupJoined = true
+			end
+			self.groupUpdate = true
 		end
 		self.UpdateRosterInfoQueued = true
 		C_Timer.After(.4, GROUP_ROSTER_UPDATE_BUCKET)
 	end
 end
-
---[[function P:CHAT_MSG_BG_SYSTEM_NEUTRAL(arg1)
-	if self.disabled then
-		return
-	end
-
-	if strfind(arg1, "!$") then
-		CM:EnqueueInspect(true)
-	end
-end]]
-
---[[function P:ENCOUNTER_END(encounterID, encounterName, difficultyID, groupSize, success)
-	if self.disabled then
-		return
-	end
-	if groupSize > 5 then
-		self:ResetAllIcons("encounterEnd")
-	end
-end]]
 
 P.groupInfo = groupInfo
 P.callbackTimers = callbackTimers

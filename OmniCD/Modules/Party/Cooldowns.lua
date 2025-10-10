@@ -139,10 +139,8 @@ function BarFrameIconMixin:StartCooldown(cd, noGlow, reducedStartTime)
 		if not P.displayInactive then
 			frame:UpdateLayout()
 		end
-	else
-		if frame.shouldRearrangeInterrupts then
-			frame:UpdateLayout(true)
-		end
+	elseif frame.shouldRearrangeInterrupts then
+		frame:UpdateLayout(true)
 	end
 
 	if not noGlow and E.db.highlight.glow then

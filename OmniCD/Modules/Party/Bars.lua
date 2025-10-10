@@ -213,14 +213,11 @@ sorters = {
 }
 
 function BarFrameMixin:UpdateLayout(sortOrder)
-	if self.sorting then return end
-
 	local icons = self.icons
 	local displayInactive = P.displayInactive
 
 	local sorter = P.sortBy
 	if sortOrder then
-		self.sorting = true
 		local sortFunc = sorters[sorter]
 		sort(icons, sortFunc)
 	end
@@ -267,8 +264,6 @@ function BarFrameMixin:UpdateLayout(sortOrder)
 			end
 		end
 	end
-
-	self.sorting = nil
 end
 
 function BarFrameMixin:UpdateSettings()

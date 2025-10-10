@@ -148,7 +148,7 @@ function P:UpdatePassThroughButtons()
 end
 
 local function OmniCDCooldown_OnHide(self)
-	if self:GetCooldownTimes() > 0 then
+	if self:IsShown() then -- self:GetCooldownTimes() > 0
 		return
 	end
 
@@ -175,10 +175,8 @@ local function OmniCDCooldown_OnHide(self)
 		if not P.displayInactive then
 			frame:UpdateLayout()
 		end
-	else
-		if frame.shouldRearrangeInterrupts then
-			frame:UpdateLayout(true)
-		end
+	elseif frame.shouldRearrangeInterrupts then
+		frame:UpdateLayout(true)
 	end
 
 	if icon.isHighlighted then
