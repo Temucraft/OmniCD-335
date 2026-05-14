@@ -4,14 +4,6 @@ local P, CM = E.Party, E.Comm
 local pairs, tonumber, abs, floor, format, gsub, strmatch, strsplit = pairs, tonumber, abs, floor, format, gsub, strmatch, strsplit
 local GetTime = GetTime
 
---[[ Oof, there's an addon that overwrites depricated function names in the global namespace... ]]
-local GetSpellCooldown = GetSpellCooldown or function(spellID)
-	local spellCooldownInfo = C_Spell.GetSpellCooldown(spellID)
-	if spellCooldownInfo then
-		return spellCooldownInfo.startTime, spellCooldownInfo.duration, spellCooldownInfo.isEnabled, spellCooldownInfo.modRate
-	end
-end
-
 local LibDeflate = LibStub("LibDeflate")
 local COOLDOWN_SYNC_INTERVAL = 2
 local MSG_DESYNC = "DESYNC"
