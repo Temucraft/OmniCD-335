@@ -2,7 +2,7 @@
 Keybinding Widget
 Set Keybindings in the Config UI.
 -------------------------------------------------------------------------------]]
-local Type, Version = "Keybinding", 28
+local Type, Version = "Keybinding", 29
 local AceGUI = LibStub and LibStub("AceGUI-3.0", true)
 if not AceGUI or (AceGUI:GetWidgetVersion(Type) or 0) >= Version then return end
 
@@ -184,6 +184,7 @@ local function Constructor()
 	local num = AceGUI:GetNextWidgetNum(Type)
 	local frame = CreateFrame("Frame", string.format("%s%d", Type, num), UIParent)
 	local button = CreateFrame("Button", "AceGUI30KeybindingButton" .. num, frame, "UIPanelButtonTemplate2")
+	button:SetFrameLevel(frame:GetFrameLevel() + 1)
 
 	button:EnableMouse(true)
 	button:EnableMouseWheel(false)
@@ -214,7 +215,7 @@ local function Constructor()
 	msgframe:SetBackdrop(ControlBackdrop)
 	msgframe:SetBackdropColor(0,0,0)
 	msgframe:SetFrameStrata("FULLSCREEN_DIALOG")
-	msgframe:SetFrameLevel(1000)
+	msgframe:SetFrameLevel(125)
 	msgframe:SetToplevel(true)
 
 	local msg = msgframe:CreateFontString(nil, "OVERLAY", "GameFontNormal")

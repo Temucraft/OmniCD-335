@@ -185,7 +185,7 @@ function E:SetupBlizzardOptions()
 		context:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 		context:SetText("Type /oc or /omnicd to open the option panel.")
 
-		local open = CreateFrame("Button", nil, self, "UIPanelButtonTemplate")
+		local open = CreateFrame("Button", "OmniCDInterfaceOptionsButton", self, "UIPanelButtonTemplate2")
 		open:SetText("Open Option Panel")
 		open:SetWidth(177)
 		open:SetHeight(24)
