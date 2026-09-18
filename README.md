@@ -21,14 +21,14 @@ An addon that provides real-time updates on your teammates' cooldowns and abilit
 
 #### ⋮ RELATED ADDONS
 
-- [Compact Raid Frame](https://gitlab.com/tsoukie-3.3.5/compactraidframe-3.3.5)
+- [Compact Raid Frame](https://gitlab.com/tsoukie-3.3.5/compactraidframe)
 
 #### ⋮ COMMANDS
 
 <kbd>/oc</kbd> <kbd>/omnicd</kbd>
 
 > [!note] ↳ Still looking for more information?
-> You may find additional details on the [**Wiki**](https://gitlab.com/tsoukie-3.3.5/omnicd-3.3.5/-/wikis/home).
+> You may find additional details on the [**Wiki**](https://gitlab.com/tsoukie-3.3.5/omnicd/-/wikis/home).
 
 <br />
 
@@ -40,11 +40,11 @@ An addon that provides real-time updates on your teammates' cooldowns and abilit
 
 Latest Release and Changes `[.zip, .tar.gz, ...]`:
 
-#### &nbsp;&nbsp;&nbsp;&nbsp;⇣ <a href="https://gitlab.com/tsoukie-3.3.5/omnicd-3.3.5/-/releases" target="_blank">OmniCD</a>
+#### &nbsp;&nbsp;&nbsp;&nbsp;⇣ <a href="https://gitlab.com/tsoukie-3.3.5/omnicd/-/releases" target="_blank">OmniCD</a>
 
 #### &nbsp;&nbsp;&nbsp;&nbsp;⇣ <a href="https://gitlab.com/tsoukie-3.3.5/classicapi/-/releases" target="_blank">ClassicAPI</a> <code>Required</code>
 
-Required Client Version: 3.3.5a (Vanilla, TBC, WotLK) | <a href="https://gitlab.com/tsoukie-3.3.5/omnicd-3.3.5/-/releases" target="_blank">⌕ All Releases</a>
+Required Client Version: 3.3.5a (Vanilla, TBC, WotLK) | <a href="https://gitlab.com/tsoukie-3.3.5/omnicd/-/releases" target="_blank">⌕ All Releases</a>
 
 <details>
 <summary>Installation Instructions</summary>
@@ -69,7 +69,7 @@ Client Directory
 
 # Reporting Issues
 
-If you experience any problems, please report the issue [here](https://gitlab.com/tsoukie-3.3.5/omnicd-3.3.5/-/issues). Doing so is the best way for us track and prioritize concerns effectively, giving us time to evaluate and investigate issues. Your contributions are valuable in improving the project for everyone!
+If you experience any problems, please report the issue [here](https://gitlab.com/tsoukie-3.3.5/omnicd/-/issues). Doing so is the best way for us track and prioritize concerns effectively, giving us time to evaluate and investigate issues. Your contributions are valuable in improving the project for everyone!
 
 <br />
 
